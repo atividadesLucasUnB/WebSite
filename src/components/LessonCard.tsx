@@ -16,7 +16,7 @@ export function Lesson(props: LessonProps) {
   })
 
   return (
-    <Link to={`/atividades/${props.slug}`} className="group">
+    <Link to={`/atividades/${props.slug}`} className="ml-5">
       <span className="text-gray-300">
         {availableDateFormatted}
       </span>
@@ -24,7 +24,7 @@ export function Lesson(props: LessonProps) {
       <div 
         className= {'rounded border border-gray-500 p-4 mt-2 group-hover:border-green-500'}>
         <header className="flex items-center justify-between">
-          <span className={'text-xs rounded py-[0.125rem] px-2 text-white border font-bold border-green-300'}>
+          <span className={'text-xs rounded py-[0.125rem] px-2 text-green-500 border font-bold border-green-300'}>
             {props.grade}
           </span>
         </header>

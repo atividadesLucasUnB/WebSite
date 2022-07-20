@@ -9,8 +9,13 @@ module.exports = {
             sans: 'Poppins, sans-serif',
           },
           colors: {
+            green: {
+                500: "#00B37E"
+            },
             gray: {
-                900: "#242428"
+                700: "#BFBFBF",
+                800: "#242428",
+                900: "#101010"
             }
         }
     },
