@@ -1,16 +1,27 @@
 import { gql, useQuery } from "@apollo/client"
 import {Header} from "../components/Header";
 import { Lesson } from "../components/LessonCard";
+import { Tecnologies } from "../components/Tecnologies";
 
 const GET_LESSONS = gql`
-    query MyQuery {
-        activities {
-            id
-            slug
-            name
-            grade
-            createdAt
-        }
+ query MyQuery {
+  activities {
+    id
+    slug
+    name
+    grade
+    createdAt
+  }
+}
+`
+const GET_TECNOLOGIES = gql`
+    query {
+    tecnologies {
+      id
+      name
+      tecnologyLogoUrl
+      emojiName
+    }
     }
 `
 interface GetLessonsResponse {
@@ -22,11 +33,20 @@ interface GetLessonsResponse {
         createdAt: Date;
     }[]
   }
-
+interface GetTecnologies {
+    tecnologies: {
+        id: string;
+        name: string;
+        tecnologyLogoUrl: string;
+        emojiName: string;
+      }[]
+}
   
 export function PageLanding() {
     const { data } =  useQuery<GetLessonsResponse>(GET_LESSONS)
-    if (!data) {
+    const { data: tecData } =  useQuery<GetTecnologies>(GET_TECNOLOGIES)
+
+    if (!data || !tecData) {
         return (
           <div className="flex-1">
             <p>Carregando...</p>
@@ -49,6 +69,23 @@ export function PageLanding() {
                 </div>
             </div>
 
+            <div className="flex ml-[5.1rem] flex-col gap-8">
+            <h1 className="font-bold text-4xl">TECNOLOGIAS</h1>
+
+            <div className="flex flex-wrap content-start -ml-5">
+            {tecData?.tecnologies.map(tecnology => {
+                return (
+                        <Tecnologies
+                            key={tecnology.id}
+                            name={tecnology.name}
+                            tecnologyLogoUrl= {tecnology.tecnologyLogoUrl}
+                            emojiName= {tecnology.emojiName}
+                        />
+                    )
+                })}
+                </div>
+
+        </div>
         <div className="flex ml-[5.1rem] flex-col gap-8">
             <h1 className="font-bold text-4xl">ATIVIDADES</h1>
 
