@@ -92,7 +92,7 @@ export function PageLanding() {
                 </div>
 
         </div>
-        <div className="flex ml-[5.1rem] flex-col gap-8">
+        <div className="flex ml-[5.1rem] flex-col gap-8 mt-[4.375rem]">
             <h1 className="font-bold text-4xl">ATIVIDADES</h1>
 
             <div className="flex flex-wrap content-start -ml-5">
@@ -111,7 +111,7 @@ export function PageLanding() {
                 </div>
 
         </div>
-        <hr className="self-end mt-[17rem]  w-full border-gray-700"/>
+        <hr className="self-end mt-20 mb-5  w-full border-gray-700"/>
       </div>
     )
 }

@@ -65,8 +65,8 @@ export function Atividades() {
         <div className="flex  p-5">
 
             <div className="ml-[6.29rem] flex flex-col ">
-                <p className="font-medium text-sm">{data?.activity.grade}</p>
-                <h1 className="font-semibold text-5xl">{data?.activity.name}</h1>
+                <p className="font-medium text-sm mb-7">{data?.activity.grade}</p>
+                <h1 className="font-semibold text-5xl mb-3">{data?.activity.name}</h1>
                 <p className="font-normal text-base w-[30rem]">
                 {data?.activity.description}
                 </p>
@@ -88,14 +88,18 @@ export function Atividades() {
 
         </div>
 
-            <div className="ml-[6.29rem] space-x-2 mt-[5.38rem] flex place-items-center">
-                <div className="bg-green-400 flex place-items-center w-[16rem] h-[4rem] rounded p-2">
+            <div className="ml-[6.29rem] space-x-2 mt-[5.38rem] flex flex-col place-items-center">
+                <div className="bg-green-400 flex place-items-center w-[16rem] h-[4rem] rounded p-2 hover:bg-green-500 " >
                     {isOperatingSystemKnow(window) === 'Linux'  ? <LinuxLogo size={32}/> : <WindowsLogo size={32}/> }
-                    <a href={ isOperatingSystemKnow(window) === 'Linux'  ?   data?.activity.windowsUrl  : data?.activity.linuxUrl} className="font-bold text-sm whitespace-nowrap align-middle ml-[0.629rem]">{isOperatingSystemKnow(window) === 'Linux'  ?   'DOWNLOAD PARA LINUX' : 'DOWNLOAD PARA WINDOWS'}</a>
+                    <a 
+                        href={ isOperatingSystemKnow(window) === 'Linux'  ?   data?.activity.windowsUrl  : data?.activity.linuxUrl} 
+                        className="font-bold text-sm whitespace-nowrap align-middle ml-[0.629rem]">
+                            {isOperatingSystemKnow(window) === 'Linux'  ?   'DOWNLOAD PARA LINUX' : 'DOWNLOAD PARA WINDOWS'}
+                    </a>
                 </div>
-                <a href="#/" className="font-bold text-sm ">DOWNLOAD PARA OUTRAS PLATAFORMAS</a>
+                <a href="#/" className="font-bold text-sm mt-8">DOWNLOAD PARA OUTRAS PLATAFORMAS</a>
             </div>
-            <hr className="self-end mt-[10rem] mb-5 w-full border-gray-700"/>
+            <hr className="self-end mt-20 mb-5 w-full border-gray-700"/>
         </div>
     )
 }
