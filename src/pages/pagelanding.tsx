@@ -9,8 +9,11 @@ const GET_LESSONS = gql`
     id
     slug
     name
-    grade
     createdAt
+    tecnologies {
+            name
+            emojiName
+    }
   }
 }
 `
@@ -29,8 +32,11 @@ interface GetLessonsResponse {
         id: string;
         slug: string;
         name: string;
-        grade: string;
         createdAt: Date;
+        tecnologies: {
+            name: string;
+            emojiName: string;
+    }[]
     }[]
   }
 interface GetTecnologies {
@@ -96,7 +102,8 @@ export function PageLanding() {
                             key={lesson.id}
                             slug={lesson.slug}
                             name={lesson.name}
-                            grade={lesson.grade}
+                            tecName={lesson.tecnologies[0].name}
+                            emojiName={lesson.tecnologies[0].emojiName}
                             createdAt={new Date(lesson.createdAt)}
                         />
                     )

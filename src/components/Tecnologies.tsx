@@ -1,4 +1,5 @@
 import {  iconHandler } from "../utils/icons"
+
 interface TecnologiesProps {
     name: string;
     tecnologyLogoUrl: string;
