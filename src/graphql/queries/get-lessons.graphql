@@ -1,0 +1,12 @@
+query GetLessons {
+  activities {
+    id
+    slug
+    name
+    createdAt
+    tecnologies {
+            name
+            emojiName
+    }
+  }
+}

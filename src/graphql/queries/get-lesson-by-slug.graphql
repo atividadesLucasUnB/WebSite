@@ -1,0 +1,16 @@
+query getLessonBySlug($slug: String) {
+  activity(where: {slug: $slug}) {
+    grade
+    name
+    linuxUrl
+    description
+    windowsUrl
+    tecnologies {
+      id
+      name
+      tecnologyURL {
+        url
+      }
+    }
+  }
+}

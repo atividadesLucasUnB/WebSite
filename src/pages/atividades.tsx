@@ -1,53 +1,17 @@
-import { gql, useQuery } from "@apollo/client";
 import { ArrowLeft, LinuxLogo, WindowsLogo } from "phosphor-react";
 import { Link, useParams } from "react-router-dom";
 import { Header } from "../components/Header";
+import { useGetLessonBySlugQuery } from "../graphql/generated";
 import { isOperatingSystemKnow } from "../utils/platform"
-
-const GET_DATA_BY_SLUG = gql`
-query getLessoBySlug($slug: String) {
-  activity(where: {slug: $slug}) {
-    grade
-    name
-    linuxUrl
-    description
-    windowsUrl
-    tecnologies {
-      id
-      name
-      tecnologyURL {
-        url
-      }
-    }
-  }
-}
-`
-
-interface GetDataBySlugResponse {
-    activity: {
-        grade: string;
-        name: string;
-        linuxUrl: string;
-        description: string;
-        windowsUrl: string; 
-        tecnologies: {
-            id: string;
-            name: string;
-            tecnologyURL: {
-                url: string;
-              }
-          }[]
-    }
-}
 
 export function Atividades() {
     const { slug } = useParams<{  slug: string;   }>();
-    const {data} = useQuery<GetDataBySlugResponse>(GET_DATA_BY_SLUG, {
+    const {data} = useGetLessonBySlugQuery({
         variables: {
             slug
         }
     })
-    if (!data) {
+    if (!data || !data.activity) {
         return (
           <div className="flex-1">
             <p>Carregando...</p>
@@ -63,7 +27,6 @@ export function Atividades() {
             </Link>
         
         <div className="flex  p-5">
-
             <div className="ml-[6.29rem] flex flex-col ">
                 <p className="font-medium text-sm mb-7">{data?.activity.grade}</p>
                 <h1 className="font-semibold text-5xl mb-3">{data?.activity.name}</h1>
@@ -87,7 +50,6 @@ export function Atividades() {
             </div>
 
         </div>
-
             <div className="ml-[6.29rem] space-x-2 mt-[5.38rem] flex flex-col place-items-center">
                 <div className="bg-green-400 flex place-items-center w-[16rem] h-[4rem] rounded p-2 hover:bg-green-500 " >
                     {isOperatingSystemKnow(window) === 'Linux'  ? <LinuxLogo size={32}/> : <WindowsLogo size={32}/> }
