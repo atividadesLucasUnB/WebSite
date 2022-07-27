@@ -51,6 +51,7 @@ export function PageLanding() {
 
             <div className="flex flex-wrap content-start -ml-5">
             {
+                !data?.activities ?
                 data?.activities.map(lesson => {
                     return (
                             <Lesson
@@ -63,6 +64,7 @@ export function PageLanding() {
                             />
                         )
                     })
+                    : <p className="ml-5">Não há nenhuma atividade para ser mostrada no momento :/</p>
             }
                 </div>
 
