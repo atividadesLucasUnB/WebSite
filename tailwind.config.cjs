@@ -20,7 +20,7 @@ module.exports = {
                 900: "#101010"
             }
         }
-    },
+    }
   },
   plugins: [],
 }

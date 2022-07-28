@@ -8,7 +8,7 @@ interface LessonProps {
     key: string;
     slug: string;
     name: string;
-    tecName: string;
+    resumedName: string;
     emojiName: string;
     createdAt: Date;
 }
@@ -19,7 +19,7 @@ export function Lesson(props: LessonProps) {
   })
 
   return (
-    <Link to={`/atividades/${props.slug}`} className="group ml-5">
+    <Link to={`/atividades/${props.slug}`} className="group mr-5 mb-5 sm:mr-0 sm:ml-5 ">
       <span className="text-gray-300">
         {availableDateFormatted}
       </span>
@@ -32,12 +32,12 @@ export function Lesson(props: LessonProps) {
             <p className="ml-2">Atividade Concluida</p>
           </span>
           <span className=' rounded py-[0.125rem] text-sm px-2 text-green-500 border font-bold border-green-300'>
-            {props.tecName}
+            {props.resumedName}
           </span>
         </header>
 
         <strong className='mt-5 flex place-content-center '>
-          <p className=""> {props.name.length > 21 ? props.name.slice(0, 21).concat("", '...') : props.name}</p>
+          <p className="text-sm sm:text-base"> {props.name.length > 21 ? props.name.slice(0, 21).concat("", '...') : props.name}</p>
         </strong>
       </div>
     </Link>

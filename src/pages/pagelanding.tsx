@@ -18,22 +18,22 @@ export function PageLanding() {
         <div className="flex flex-col gap-8">
             <Header  />
 
-            <div className="flex ml-[5.1rem] ">
+            <div className="flex flex-col md:flex-row ml-[5.1rem] ">
                 <img 
-                    className="rounded-full w-[10rem] h-[10rem]"
+                    className="rounded-full self-center w-20 h-20 mr-20 md:mr-0 md:self-auto md:w-[10rem] md:h-[10rem]"
                     src="https://github.com/twChronous.png" 
                     alt="Foto de Perfil" 
                     />
-                <div className="ml-8 mt-5">
-                    <h1 className="font-bold text-4xl">Lucas Mateus Teixeira de Souza</h1>
-                    <p  className="font-medium text-xl mt-7">Estudante de engenharia de software - 1º semestre</p>
+                <div className=" mt-5 self-center mr-3  sm:self-start sm:ml-8">
+                    <h1 className="font-bold  text-2xl sm:self-start sm:text-4xl">Lucas Mateus Teixeira de Souza</h1>
+                    <p  className="font-medium text-lg sm:text-xl mt-7">Estudante de engenharia de software </p>
                 </div>
             </div>
 
             <div className="flex ml-[5.1rem] flex-col gap-8">
-            <h1 className="font-bold text-4xl">TECNOLOGIAS</h1>
+            <h1 className="font-bold  text-2xl mr-20  self-center sm:mr-0 sm:self-start sm:text-4xl">TECNOLOGIAS</h1>
 
-            <div className="flex flex-wrap content-start -ml-5">
+            <div className="flex flex-wrap  sm:content-start sm:-ml-5">
             {tecData?.tecnologies.map(tecnology => {
                 return (
                         <Tecnologies
@@ -47,9 +47,9 @@ export function PageLanding() {
 
         </div>
         <div className="flex ml-[5.1rem] flex-col gap-8 mt-[4.375rem]">
-            <h1 className="font-bold text-4xl">ATIVIDADES</h1>
+            <h1 className="font-bold  text-2xl mr-20 self-center  sm:mr-0 sm:self-start sm:text-4xl">ATIVIDADES</h1>
 
-            <div className="flex flex-wrap content-start -ml-5">
+            <div className="flex flex-wrap content-center  sm:content-start sm:-ml-5 ">
             {
                 data?.activities.length > 0 ?
                 data?.activities.map(lesson => {
@@ -58,13 +58,13 @@ export function PageLanding() {
                                 key={lesson.id}
                                 slug={lesson.slug}
                                 name={lesson.name}
-                                tecName={lesson.tecnologies[0].name}
+                                resumedName={lesson.tecnologies[0].resumedName}
                                 emojiName={lesson.tecnologies[0].emojiName}
                                 createdAt={new Date(lesson.createdAt)}
                             />
                         )
                     })
-                    : <p className="ml-5">Não há nenhuma atividade para ser mostrada no momento :/</p>
+                    : <p className="ml-8 mr-10 sm:ml-5">Não há nenhuma atividade para ser mostrada no momento :/</p>
             }
                 </div>
 

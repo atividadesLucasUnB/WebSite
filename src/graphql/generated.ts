@@ -3399,6 +3399,7 @@ export type Tecnology = Node & {
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** User that last published this document */
   publishedBy?: Maybe<User>;
+  resumedName: Scalars['String'];
   scheduledIn: Array<ScheduledOperation>;
   /** System stage field */
   stage: Stage;
@@ -3476,6 +3477,7 @@ export type TecnologyCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
   emojiName: Scalars['String'];
   name: Scalars['String'];
+  resumedName: Scalars['String'];
   tecnologyURL: AssetCreateOneInlineInput;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -3602,6 +3604,25 @@ export type TecnologyManyWhereInput = {
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
   publishedBy?: InputMaybe<UserWhereInput>;
+  resumedName?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  resumedName_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  resumedName_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  resumedName_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  resumedName_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  resumedName_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  resumedName_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  resumedName_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  resumedName_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  resumedName_starts_with?: InputMaybe<Scalars['String']>;
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
@@ -3635,6 +3656,8 @@ export enum TecnologyOrderByInput {
   NameDesc = 'name_DESC',
   PublishedAtAsc = 'publishedAt_ASC',
   PublishedAtDesc = 'publishedAt_DESC',
+  ResumedNameAsc = 'resumedName_ASC',
+  ResumedNameDesc = 'resumedName_DESC',
   UpdatedAtAsc = 'updatedAt_ASC',
   UpdatedAtDesc = 'updatedAt_DESC'
 }
@@ -3643,6 +3666,7 @@ export type TecnologyUpdateInput = {
   cl60y3qe14gk801t5bvaz1bz5?: InputMaybe<ActivityUpdateManyInlineInput>;
   emojiName?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  resumedName?: InputMaybe<Scalars['String']>;
   tecnologyURL?: InputMaybe<AssetUpdateOneInlineInput>;
 };
 
@@ -3665,6 +3689,7 @@ export type TecnologyUpdateManyInlineInput = {
 
 export type TecnologyUpdateManyInput = {
   emojiName?: InputMaybe<Scalars['String']>;
+  resumedName?: InputMaybe<Scalars['String']>;
 };
 
 export type TecnologyUpdateManyWithNestedWhereInput = {
@@ -3809,6 +3834,25 @@ export type TecnologyWhereInput = {
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
   publishedBy?: InputMaybe<UserWhereInput>;
+  resumedName?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  resumedName_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  resumedName_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  resumedName_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  resumedName_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  resumedName_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  resumedName_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  resumedName_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  resumedName_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  resumedName_starts_with?: InputMaybe<Scalars['String']>;
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
@@ -4269,6 +4313,7 @@ export enum _MutationKind {
   PublishMany = 'publishMany',
   SchedulePublish = 'schedulePublish',
   ScheduleUnpublish = 'scheduleUnpublish',
+
   Unpublish = 'unpublish',
   UnpublishMany = 'unpublishMany',
   Update = 'update',
@@ -4312,7 +4357,7 @@ export type GetLessonBySlugQuery = { __typename?: 'Query', activity?: { __typena
 export type GetLessonsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetLessonsQuery = { __typename?: 'Query', activities: Array<{ __typename?: 'Activity', id: string, slug: string, name: string, createdAt: any, tecnologies: Array<{ __typename?: 'Tecnology', name: string, emojiName: string }> }> };
+export type GetLessonsQuery = { __typename?: 'Query', activities: Array<{ __typename?: 'Activity', id: string, slug: string, name: string, createdAt: any, tecnologies: Array<{ __typename?: 'Tecnology', resumedName: string, emojiName: string }> }> };
 
 export type GetTecnologiesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -4374,7 +4419,7 @@ export const GetLessonsDocument = gql`
     name
     createdAt
     tecnologies {
-      name
+      resumedName
       emojiName
     }
   }
