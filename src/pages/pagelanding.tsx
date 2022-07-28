@@ -51,7 +51,7 @@ export function PageLanding() {
 
             <div className="flex flex-wrap content-start -ml-5">
             {
-                data?.activities ?
+                data?.activities.length > 0 ?
                 data?.activities.map(lesson => {
                     return (
                             <Lesson
