@@ -26,31 +26,32 @@ export function Atividades() {
                 <p className="text-base font-normal">VOLTAR AO MENU</p>
             </Link>
         
-        <div className="flex  p-5">
-            <div className="ml-[6.29rem] flex flex-col ">
+
+        <div className="flex flex-col lg:flex-row p-5">
+            <div className="ml-[6.29rem] flex flex-col mb-10 ">
                 <p className="font-medium text-sm mb-7">{data?.activity.grade}</p>
-                <h1 className="font-semibold text-5xl mb-3">{data?.activity.name}</h1>
-                <p className="font-normal text-base w-[30rem]">
+                <h1 className="font-semibold text-xl sm:text-5xl mb-3">{data?.activity.name}</h1>
+                <p className="font-normal text-base w-[10rem] md:w-[30rem] ">
                 {data?.activity.description}
                 </p>
             </div>
 
-            <div className="flex flex-col ml-96">
-                <p className="font-semibold text-5xl">TECNOLOGIAS USADAS</p>
-                <div className="mt-5">
+            <div className="flex flex-col ml-[6.29rem] lg:ml-96 ">
+                <p className="font-semibold text-xl sm:text-5xl">TECNOLOGIAS USADAS</p>
+                <div className="mt-5 self-start">
                 {data?.activity.tecnologies.map(tecnology => {
                     return (
                         <img 
-                            src={tecnology.tecnologyURL.url} 
-                            alt={`${tecnology.name} Logo`} 
-                            className="w-[8rem] h-[8rem] "/>
-                    )
-                })}
+                        src={tecnology.tecnologyURL.url} 
+                        alt={`${tecnology.name} Logo`} 
+                        className="w-[8rem] h-[8rem] "/>
+                        )
+                    })}
                 </div>
             </div>
 
         </div>
-            <div className="ml-[6.29rem] space-x-2 mt-[5.38rem] flex flex-col place-items-center">
+            <div className="ml-[6.29rem] space-x-2 mt-[5.38rem] flex flex-col place-items-center mr-10">
                 <div className="bg-green-400 flex place-items-center w-[16rem] h-[4rem] rounded p-2 hover:bg-green-500 " >
                     {isOperatingSystemKnow(window) === 'Linux'  ? <LinuxLogo size={32}/> : <WindowsLogo size={32}/> }
                     <a 
