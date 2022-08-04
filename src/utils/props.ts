@@ -8,6 +8,14 @@ export interface ProjectProps {
     createdAt: Date;
 }
 
+export interface LessonProps {
+    key: string;
+    slug: string;
+    name: string;
+    resumedName: string;
+    emojiName: string;
+    createdAt: Date;
+}
 export interface TecnologiesProps {
     name: string;
     emojiName: string;

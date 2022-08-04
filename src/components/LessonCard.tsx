@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import ptBR from 'date-fns/locale/pt-BR';
 
 import {  iconHandler } from "../utils/icons";
-import { ProjectProps } from "../utils/props";
+import { LessonProps } from "../utils/props";
 
-export function Lesson(props: ProjectProps) {
+export function Lesson(props: LessonProps) {
   const availableDateFormatted = format(props.createdAt, "EEEE' • 'd' de 'MMMM'", {
     locale: ptBR,
   })
