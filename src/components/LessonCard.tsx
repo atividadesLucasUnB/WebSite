@@ -17,7 +17,7 @@ export function Lesson(props: LessonProps) {
       </span>
 
       <div 
-        className='rounded border border-gray-500 p-4 mt-2 group-hover:border-green-500'>
+        className='rounded border border-gray-500 p-4 mt-2 min-w-[17rem] group-hover:border-green-500'>
         <header className="flex items-center justify-evenly">
         <span className='flex items-center text-sm rounded py-[0.125rem] px-2 text-green-500  font-bold mr-5'>
             {iconHandler({emojiName: props.emojiName, size: 20})}
