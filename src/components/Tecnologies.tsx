@@ -1,9 +1,5 @@
 import {  iconHandler } from "../utils/icons"
-
-interface TecnologiesProps {
-    name: string;
-    emojiName: string;
-}
+import { TecnologiesProps } from "../utils/props";
 
 export function Tecnologies(props: TecnologiesProps) {
   return (

@@ -1,19 +1,14 @@
 import {Header} from "../components/Header";
 import { Lesson } from "../components/LessonCard";
+import { Project } from "../components/ProjectCard";
 import { Tecnologies } from "../components/Tecnologies";
-import { useGetLessonsQuery, useGetTecnologiesQuery } from "../graphql/generated";
+import { useGetLessonsQuery, useGetProjectsQuery, useGetTecnologiesQuery } from "../graphql/generated";
 
 export function PageLanding() {
     const { data } =  useGetLessonsQuery();
-    const { data: tecData } =  useGetTecnologiesQuery()
+    const { data: tecData } =  useGetTecnologiesQuery();
+    const { data: ProjData } =  useGetProjectsQuery();
 
-    if (!data || !tecData) {
-        return (
-          <div className="flex-1">
-            <p>Carregando...</p>
-          </div>
-        )
-      }
     return(
         <div className="flex flex-col gap-8">
             <Header  />
@@ -46,11 +41,36 @@ export function PageLanding() {
                 </div>
 
         </div>
-        <div className="flex ml-[5.1rem] flex-col gap-8 mt-[4.375rem]">
+        <div className="flex ml-[5.1rem] flex-col gap-8 mt-[3.125rem]">
+            <h1 className="font-bold  text-2xl mr-20 self-center  sm:mr-0 sm:self-start sm:text-4xl">PROJETOS</h1>
+
+            <div className="flex flex-wrap content-center  sm:content-start sm:-ml-5 ">
+            { ProjData &&
+                ProjData?.projects.length > 0 ?
+                ProjData?.projects.map(project => {
+                    return (
+                            <Project
+                                key={project.id}
+                                slug={project.slug}
+                                name={project.name}
+                                isDone= {project.isDone}
+                                resumedName={project.tecnologies[0].resumedName}
+                                emojiName={project.tecnologies[0].emojiName}
+                                createdAt={new Date(project.createdAt)}
+                            />
+                        )
+                    })
+                    : <p className="ml-8 mr-10 sm:ml-5">Não há nenhum projeto para ser mostrada no momento :/</p>
+            }
+                </div>
+
+        </div>
+
+        <div className="flex ml-[5.1rem] flex-col gap-8 mt-[2rem]">
             <h1 className="font-bold  text-2xl mr-20 self-center  sm:mr-0 sm:self-start sm:text-4xl">ATIVIDADES</h1>
 
             <div className="flex flex-wrap content-center  sm:content-start sm:-ml-5 ">
-            {
+            { data &&
                 data?.activities.length > 0 ?
                 data?.activities.map(lesson => {
                     return (

@@ -1,6 +1,5 @@
-query getLessonBySlug($slug: String) {
-  activity(where: {slug: $slug}) {
-    grade
+query getProjectBySlug($slug: String) {
+  project(where: {slug: $slug}) {
     name
     linuxUrl
     otherOs

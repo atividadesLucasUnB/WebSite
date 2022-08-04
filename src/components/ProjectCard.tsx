@@ -5,25 +5,25 @@ import ptBR from 'date-fns/locale/pt-BR';
 import {  iconHandler } from "../utils/icons";
 import { ProjectProps } from "../utils/props";
 
-export function Lesson(props: ProjectProps) {
+export function Project(props: ProjectProps) {
   const availableDateFormatted = format(props.createdAt, "EEEE' • 'd' de 'MMMM'", {
     locale: ptBR,
   })
 
   return (
-    <Link to={`/atividades/${props.slug}`} className="group mr-5 mb-5 sm:mr-0 sm:ml-5 ">
+    <Link to={`/projects/${props.slug}`} className="group mr-5 mb-5 sm:mr-0 sm:ml-5 ">
       <span className="text-gray-300">
         {availableDateFormatted}
       </span>
 
       <div 
-        className='rounded border border-gray-500 p-4 mt-2 group-hover:border-green-500'>
+        className={`rounded border border-gray-500 p-4 mt-2  ${props.isDone ? "group-hover:border-green-500" : "group-hover:border-yellow-500"}`}>
         <header className="flex items-center justify-evenly">
-        <span className='flex items-center text-sm rounded py-[0.125rem] px-2 text-green-500  font-bold mr-5'>
+        <span className={`flex items-center text-sm rounded py-[0.125rem] px-2  font-bold mr-5 ${props.isDone ? "text-green-500" : "text-yellow-500"}`}>
             {iconHandler({emojiName: props.emojiName, size: 20})}
-            <p className="ml-2">Atividade Concluida</p>
+            <p className="ml-2">{props.isDone ? "Projeto Concluido" : "Projeto em Desenvolvimento"}</p>
           </span>
-          <span className=' rounded py-[0.125rem] text-sm px-2 text-green-500 border font-bold border-green-300'>
+          <span className={`rounded py-[0.125rem] text-sm px-2 border font-bold  ${props.isDone ? "text-green-500 border-green-300" : "text-yellow-500 border-yellow-300"}`}>
             {props.resumedName}
           </span>
         </header>

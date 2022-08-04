@@ -1,0 +1,13 @@
+query GetProjects {
+  projects {
+    id
+    slug
+    name
+    isDone
+    createdAt
+    tecnologies {
+            resumedName
+            emojiName
+    }
+  }
+}

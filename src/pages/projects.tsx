@@ -1,17 +1,17 @@
 import { ArrowLeft, GithubLogo, LinuxLogo, WindowsLogo } from "phosphor-react";
 import { Link, useParams } from "react-router-dom";
 import { Header } from "../components/Header";
-import { useGetLessonBySlugQuery } from "../graphql/generated";
+import { useGetProjectBySlugQuery } from "../graphql/generated";
 import { isOperatingSystemKnow } from "../utils/platform"
 
-export function Atividades() {
+export function Projects() {
     const { slug } = useParams<{  slug: string;   }>();
-    const {data} = useGetLessonBySlugQuery({
+    const {data} = useGetProjectBySlugQuery({
         variables: {
             slug
         }
     })
-    if (!data || !data.activity) {
+    if (!data || !data.project) {
         return (
           <div className="flex-1">
             <p>Carregando...</p>
@@ -29,17 +29,16 @@ export function Atividades() {
 
         <div className="flex flex-col lg:flex-row p-5">
             <div className="ml-[6.29rem] flex flex-col mb-10 ">
-                <p className="font-medium text-sm mb-7">{data?.activity.grade}</p>
-                <h1 className="font-semibold text-xl sm:text-5xl mb-3">{data?.activity.name}</h1>
+                <h1 className="font-semibold text-xl sm:text-5xl mb-3">{data?.project.name}</h1>
                 <p className="font-normal text-base w-[10rem] md:w-[30rem] ">
-                {data?.activity.description}
+                {data?.project.description}
                 </p>
             </div>
 
             <div className="flex flex-col ml-[6.29rem] lg:ml-96 ">
                 <p className="font-semibold text-xl sm:text-5xl">TECNOLOGIAS USADAS</p>
                 <div className="mt-5 self-start flex">
-                {data?.activity.tecnologies.map(tecnology => {
+                {data?.project.tecnologies.map(tecnology => {
                     return (
                         <img 
                         src={tecnology.tecnologyURL.url} 
@@ -51,10 +50,10 @@ export function Atividades() {
             </div>
 
         </div>
-            { data?.activity.hasDownload ? 
+            { data?.project.hasDownload ? 
             <div className="ml-[6.29rem] space-x-2 mt-[5.38rem] flex flex-col place-items-center mr-10">
             <a 
-            href={isOperatingSystemKnow(window) === 'Linux'  ?   data?.activity.linuxUrl  : data?.activity.windowsUrl} 
+            href={isOperatingSystemKnow(window) === 'Linux'  ?   data?.project.linuxUrl  : data?.project.windowsUrl} 
             className="bg-green-400 flex place-items-center w-[16rem] h-[4rem] rounded p-2 hover:bg-green-500 " >
                 {isOperatingSystemKnow(window) === 'Linux'  ? <LinuxLogo size={32}/> : <WindowsLogo size={32}/> }
                 <a 
@@ -62,20 +61,20 @@ export function Atividades() {
                         {isOperatingSystemKnow(window) === 'Linux'  ?   'DOWNLOAD PARA LINUX' : 'DOWNLOAD PARA WINDOWS'}
                 </a>
             </a>
-            <a href={data?.activity.otherOs} className="font-bold text-sm mt-8">DOWNLOAD PARA OUTRAS PLATAFORMAS</a>
+            <a href={data?.project.otherOs} className="font-bold text-sm mt-8">DOWNLOAD PARA OUTRAS PLATAFORMAS</a>
         </div>
             :
             <div className="ml-[6.29rem] space-x-2 mt-[5.38rem] flex flex-col place-items-center mr-10">
+            <a 
+            href={data?.project.otherOs} 
+            className="bg-green-400 flex place-items-center w-[16rem] h-[4rem] rounded p-5 hover:bg-green-500 align-middle" >
+                <GithubLogo size={32} />
                 <a 
-                href={data?.activity.otherOs} 
-                className="bg-green-400 flex place-items-center w-[16rem] h-[4rem] rounded p-5 hover:bg-green-500 align-middle" >
-                    <GithubLogo size={32} />
-                    <a 
-                        className="font-bold text-sm whitespace-nowrap  ml-[0.629rem]">
-                            CÓDIGO NO GITHUB
-                    </a>
+                    className="font-bold text-sm whitespace-nowrap  ml-[0.629rem]">
+                        CÓDIGO NO GITHUB
                 </a>
-            </div>
+            </a>
+        </div>
             }
             <hr className="self-end mt-20 mb-5 w-full border-gray-700"/>
         </div>
