@@ -50,7 +50,7 @@ export function Projects() {
             </div>
 
         </div>
-            { data?.project.hasDownload ? 
+            { (data?.project.linuxUrl && data?.project.windowsUrl) && data?.project.hasDownload ? 
             <div className="ml-[6.29rem] space-x-2 mt-[5.38rem] flex flex-col place-items-center mr-10">
             <a 
             href={isOperatingSystemKnow(window) === 'Linux'  ?   data?.project.linuxUrl  : data?.project.windowsUrl} 

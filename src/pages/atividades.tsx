@@ -2,7 +2,7 @@ import { ArrowLeft, GithubLogo, LinuxLogo, WindowsLogo } from "phosphor-react";
 import { Link, useParams } from "react-router-dom";
 import { Header } from "../components/Header";
 import { useGetLessonBySlugQuery } from "../graphql/generated";
-import { isOperatingSystemKnow } from "../utils/platform"
+import { isOperatingSystemKnow } from "../utils/platform.js"
 
 export function Atividades() {
     const { slug } = useParams<{  slug: string;   }>();
@@ -51,7 +51,7 @@ export function Atividades() {
             </div>
 
         </div>
-            { data?.activity.hasDownload ? 
+            { (data?.activity.linuxUrl && data?.activity.windowsUrl) && data?.activity.hasDownload ? 
             <div className="ml-[6.29rem] space-x-2 mt-[5.38rem] flex flex-col place-items-center mr-10">
             <a 
             href={isOperatingSystemKnow(window) === 'Linux'  ?   data?.activity.linuxUrl  : data?.activity.windowsUrl} 
