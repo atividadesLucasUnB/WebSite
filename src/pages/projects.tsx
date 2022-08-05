@@ -37,13 +37,13 @@ export function Projects() {
 
             <div className="flex flex-col ml-[6.29rem] lg:ml-96 ">
                 <p className="font-semibold text-xl sm:text-5xl">TECNOLOGIAS USADAS</p>
-                <div className="mt-5 self-start flex">
+                <div className="mt-5 self-start flex ">
                 {data?.project.tecnologies.map(tecnology => {
                     return (
                         <img 
                         src={tecnology.tecnologyURL.url} 
                         alt={`${tecnology.name} Logo`} 
-                        className="w-[8rem] h-[8rem] "/>
+                        className="w-[5rem] h-[5rem] mr-5"/>
                         )
                     })}
                 </div>
@@ -76,7 +76,7 @@ export function Projects() {
             </a>
         </div>
             }
-            <hr className="self-end mt-20 mb-5 w-full border-gray-700"/>
+            <hr className="self-end mt-40 mb-5 w-full border-gray-700"/>
         </div>
     )
 }

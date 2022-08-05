@@ -44,7 +44,7 @@ export function Atividades() {
                         <img 
                         src={tecnology.tecnologyURL.url} 
                         alt={`${tecnology.name} Logo`} 
-                        className="w-[8rem] h-[8rem] "/>
+                        className="w-[5rem] h-[5rem] mr-5"/>
                         )
                     })}
                 </div>
