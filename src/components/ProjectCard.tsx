@@ -17,13 +17,13 @@ export function Project(props: ProjectProps) {
       </span>
 
       <div 
-        className={`rounded border border-gray-500 p-4 mt-2  min-w-[21.1rem] ${props.isDone ? "group-hover:border-green-500" : "group-hover:border-yellow-500"}`}>
+        className={`rounded border border-gray-500 p-4 mt-2 min-w-[16rem] md:min-w-[21.1rem] ${props.isDone ? "group-hover:border-green-500" : "group-hover:border-yellow-500"}`}>
         <header className="flex items-center justify-evenly">
-        <span className={`flex items-center text-sm rounded py-[0.125rem] px-2  font-bold mr-5 ${props.isDone ? "text-green-500" : "text-yellow-500"}`}>
+        <span className={`flex items-center text-sm rounded py-[0.125rem]   font-bold  ${props.isDone ? "text-green-500 mr-10" : "text-yellow-500 mr-5"}`}>
             {iconHandler({emojiName: props.emojiName, size: 20})}
             <p className="ml-2">{props.isDone ? "Projeto Concluido" : "Projeto em Desenvolvimento"}</p>
           </span>
-          <span className={`rounded py-[0.125rem] text-sm px-2 border font-bold  ${props.isDone ? "text-green-500 border-green-300" : "text-yellow-500 border-yellow-300"}`}>
+          <span className={`rounded py-[0.125rem] text-sm px-2 border font-bold  ${props.isDone ? "text-green-500 border-green-300 ml-10" : "text-yellow-500 border-yellow-300"}`}>
             {props.resumedName}
           </span>
         </header>

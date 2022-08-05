@@ -44,7 +44,7 @@ export function PageLanding() {
         <div className="flex ml-[5.1rem] flex-col gap-8 mt-[3.125rem]">
             <h1 className="font-bold  text-2xl mr-20 self-center  sm:mr-0 sm:self-start sm:text-4xl">PROJETOS</h1>
 
-            <div className="flex flex-wrap content-center  sm:content-start sm:-ml-5 ">
+            <div className="flex flex-wrap content-start -ml-10 scroll-pl-6  md:content-center md:-ml-5">
             { ProjData &&
                 ProjData?.projects.length > 0 ?
                 ProjData?.projects.map(project => {
@@ -69,7 +69,7 @@ export function PageLanding() {
         <div className="flex ml-[5.1rem] flex-col gap-8 mt-[2rem]">
             <h1 className="font-bold  text-2xl mr-20 self-center  sm:mr-0 sm:self-start sm:text-4xl">ATIVIDADES</h1>
 
-            <div className="flex flex-wrap content-center  sm:content-start sm:-ml-5 ">
+            <div className="flex flex-wrap content-start -ml-10  md:content-center md:-ml-5">
             { data &&
                 data?.activities.length > 0 ?
                 data?.activities.map(lesson => {
