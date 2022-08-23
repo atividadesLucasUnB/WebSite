@@ -1,5 +1,5 @@
 query GetLessons {
-  activities {
+  activities(orderBy: createdAt_ASC) {
     id
     slug
     name

@@ -1,0 +1,12 @@
+query GetFirstFourLessons {
+  activities(first: 4, orderBy: createdAt_ASC) {
+    id
+    slug
+    name
+    createdAt
+    tecnologies {
+      resumedName
+      emojiName
+    }
+  }
+}

@@ -1,14 +1,14 @@
-import {Header} from "../components/Header";
+import { Header } from "../components/Header";
 import { Lesson } from "../components/LessonCard";
 import { Project } from "../components/ProjectCard";
 import { Tecnologies } from "../components/Tecnologies";
-import { useGetLessonsQuery, useGetProjectsQuery, useGetTecnologiesQuery } from "../graphql/generated";
+import { useGetFirstFourLessonsQuery, useGetFirstFourProjectsQuery, useGetLessonsQuery, useGetProjectsQuery, useGetTecnologiesQuery } from "../graphql/generated";
 
 export function PageLanding() {
-    const { data } =  useGetLessonsQuery();
+    const { data } =  useGetFirstFourLessonsQuery();
     const { data: tecData } =  useGetTecnologiesQuery();
-    const { data: ProjData } =  useGetProjectsQuery();
-
+    const { data: ProjData } =  useGetFirstFourProjectsQuery();
+    
     return(
         <div className="flex flex-col gap-8">
             <Header  />

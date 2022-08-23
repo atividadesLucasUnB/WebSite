@@ -1,5 +1,5 @@
 query GetTecnologies {
-    tecnologies {
+    tecnologies(orderBy: createdAt_ASC) {
       id
       name
       emojiName

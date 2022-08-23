@@ -1,5 +1,5 @@
 query GetProjects {
-  projects {
+  projects(orderBy: createdAt_ASC) {
     id
     slug
     name
