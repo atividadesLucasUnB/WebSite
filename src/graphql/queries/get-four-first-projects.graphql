@@ -1,5 +1,5 @@
 query GetFirstFourProjects {
-  projects(first: 4, orderBy: createdAt_ASC) {
+  projects(first: 4, orderBy: createdAt_DESC) {
     id
     slug
     name

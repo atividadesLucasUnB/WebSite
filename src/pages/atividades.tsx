@@ -1,17 +1,13 @@
-import { ArrowLeft, GithubLogo, LinuxLogo, WindowsLogo } from "phosphor-react";
-import { Link, useParams } from "react-router-dom";
+import { ArrowLeft } from "phosphor-react";
+import { Link } from "react-router-dom";
 import { Header } from "../components/Header";
-import { useGetLessonBySlugQuery } from "../graphql/generated";
-import { isOperatingSystemKnow } from "../utils/platform.js"
+import { Lesson } from "../components/LessonCard";
+import { useGetLessonsQuery } from "../graphql/generated";
 
 export function Atividades() {
-    const { slug } = useParams<{  slug: string;   }>();
-    const {data} = useGetLessonBySlugQuery({
-        variables: {
-            slug
-        }
-    })
-    if (!data || !data.activity) {
+    const { data } = useGetLessonsQuery();
+
+    if (!data || !data.activities) {
         return (
           <div className="flex-1">
             <p>Carregando...</p>
@@ -21,62 +17,35 @@ export function Atividades() {
     return (
         <div className="">
             <Header />
-            <Link to="/#" className="flex  space-x-2 place-items-center ml-[4rem] m-[5rem]">
+            <Link to="/#" className="flex  space-x-2 place-items-center ml-[4rem] mt-[4rem]">
                 <ArrowLeft size={32}/>
                 <p className="text-base font-normal">VOLTAR AO MENU</p>
             </Link>
         
 
-        <div className="flex flex-col lg:flex-row p-5">
-            <div className="ml-[6.29rem] flex flex-col mb-10 ">
-                <p className="font-medium text-sm mb-7">{data?.activity.grade}</p>
-                <h1 className="font-semibold text-xl sm:text-5xl mb-3">{data?.activity.name}</h1>
-                <p className="font-normal text-base w-[10rem] md:w-[30rem] ">
-                {data?.activity.description}
-                </p>
+        <div className="flex flex-col mt-[3rem] gap-8 lg:flex-row p-5">
+            <div className="flex ml-[40vw] mb-10 ">
+                <h1 className="font-semibold text-xl sm:text-5xl mb-3">ATIVIDADES</h1>
             </div>
-
-            <div className="flex flex-col ml-[6.29rem] lg:ml-96 ">
-                <p className="font-semibold text-xl sm:text-5xl">TECNOLOGIAS USADAS</p>
-                <div className="mt-5 self-start flex">
-                {data?.activity.tecnologies.map(tecnology => {
+            <div className="flex flex-wrap content-start -ml-10 mt-10 md:content-center md:-ml-5">
+            { data &&
+                data?.activities.length > 0 ?
+                data?.activities.map(lesson => {
                     return (
-                        <img 
-                        src={tecnology.tecnologyURL.url} 
-                        alt={`${tecnology.name} Logo`} 
-                        className="w-[5rem] h-[5rem] mr-5"/>
+                            <Lesson
+                                key={lesson.id}
+                                slug={lesson.slug}
+                                name={lesson.name}
+                                resumedName={lesson.tecnologies[0].resumedName}
+                                emojiName={lesson.tecnologies[0].emojiName}
+                                createdAt={new Date(lesson.createdAt)}
+                            />
                         )
-                    })}
-                </div>
-            </div>
-
-        </div>
-            { (data?.activity.linuxUrl && data?.activity.windowsUrl) && data?.activity.hasDownload ? 
-            <div className="ml-[6.29rem] space-x-2 mt-[5.38rem] flex flex-col place-items-center mr-10">
-            <a 
-            href={isOperatingSystemKnow(window) === 'Linux'  ?   data?.activity.linuxUrl  : data?.activity.windowsUrl} 
-            className="bg-green-400 flex place-items-center w-[16rem] h-[4rem] rounded p-2 hover:bg-green-500 " >
-                {isOperatingSystemKnow(window) === 'Linux'  ? <LinuxLogo size={32}/> : <WindowsLogo size={32}/> }
-                <a 
-                    className="font-bold text-sm whitespace-nowrap align-middle ml-[0.629rem]">
-                        {isOperatingSystemKnow(window) === 'Linux'  ?   'DOWNLOAD PARA LINUX' : 'DOWNLOAD PARA WINDOWS'}
-                </a>
-            </a>
-            <a href={data?.activity.otherOs} className="font-bold text-sm mt-8">DOWNLOAD PARA OUTRAS PLATAFORMAS</a>
-        </div>
-            :
-            <div className="ml-[6.29rem] space-x-2 mt-[5.38rem] flex flex-col place-items-center mr-10">
-                <a 
-                href={data?.activity.otherOs} 
-                className="bg-green-400 flex place-items-center w-[16rem] h-[4rem] rounded p-5 hover:bg-green-500 align-middle" >
-                    <GithubLogo size={32} />
-                    <a 
-                        className="font-bold text-sm whitespace-nowrap  ml-[0.629rem]">
-                            CÓDIGO NO GITHUB
-                    </a>
-                </a>
-            </div>
+                    })
+                    : <p className="ml-8 mr-10 sm:ml-5">Não há nenhuma atividade para ser mostrada no momento :/</p>
             }
+                </div>
+        </div>
             <hr className="self-end mt-20 mb-5 w-full border-gray-700"/>
         </div>
     )

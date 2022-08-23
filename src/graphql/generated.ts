@@ -5275,7 +5275,7 @@ export type GetTecnologiesQuery = { __typename?: 'Query', tecnologies: Array<{ _
 
 export const GetFirstFourLessonsDocument = gql`
     query GetFirstFourLessons {
-  activities(first: 4, orderBy: createdAt_ASC) {
+  activities(first: 4, orderBy: createdAt_DESC) {
     id
     slug
     name
@@ -5316,7 +5316,7 @@ export type GetFirstFourLessonsLazyQueryHookResult = ReturnType<typeof useGetFir
 export type GetFirstFourLessonsQueryResult = Apollo.QueryResult<GetFirstFourLessonsQuery, GetFirstFourLessonsQueryVariables>;
 export const GetFirstFourProjectsDocument = gql`
     query GetFirstFourProjects {
-  projects(first: 4, orderBy: createdAt_ASC) {
+  projects(first: 4, orderBy: createdAt_DESC) {
     id
     slug
     name

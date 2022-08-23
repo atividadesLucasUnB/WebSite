@@ -2,7 +2,12 @@ import { Header } from "../components/Header";
 import { Lesson } from "../components/LessonCard";
 import { Project } from "../components/ProjectCard";
 import { Tecnologies } from "../components/Tecnologies";
-import { useGetFirstFourLessonsQuery, useGetFirstFourProjectsQuery, useGetLessonsQuery, useGetProjectsQuery, useGetTecnologiesQuery } from "../graphql/generated";
+import { Link } from "react-router-dom";
+import { 
+    useGetTecnologiesQuery,
+    useGetFirstFourLessonsQuery, 
+    useGetFirstFourProjectsQuery
+} from "../graphql/generated";
 
 export function PageLanding() {
     const { data } =  useGetFirstFourLessonsQuery();
@@ -42,7 +47,12 @@ export function PageLanding() {
 
         </div>
         <div className="flex ml-[5.1rem] flex-col gap-8 mt-[3.125rem]">
-            <h1 className="font-bold  text-2xl mr-20 self-center  sm:mr-0 sm:self-start sm:text-4xl">PROJETOS</h1>
+            <div className="flex text-center">
+                <h1 className="font-bold  text-2xl mr-20 self-center sm:mr-0 sm:self-start sm:text-4xl">PROJETOS</h1>
+                <Link to="/projects" className="flex ml-3 self-center">
+                    <p className="text-base font-normal">Mostrar todos projetos</p>
+                </Link>
+            </div>
 
             <div className="flex flex-wrap content-start -ml-10 scroll-pl-6  md:content-center md:-ml-5">
             { ProjData &&
@@ -67,8 +77,12 @@ export function PageLanding() {
         </div>
 
         <div className="flex ml-[5.1rem] flex-col gap-8 mt-[2rem]">
-            <h1 className="font-bold  text-2xl mr-20 self-center  sm:mr-0 sm:self-start sm:text-4xl">ATIVIDADES</h1>
-
+            <div className="flex text-center">
+                <h1 className="font-bold  text-2xl mr-20 self-center sm:mr-0 sm:self-start sm:text-4xl">ATIVIDADES</h1>
+                <Link to="/atividades" className="flex ml-3 self-center">
+                    <p className="text-base font-normal">Mostrar todas atividades</p>
+                </Link>
+            </div>
             <div className="flex flex-wrap content-start -ml-10  md:content-center md:-ml-5">
             { data &&
                 data?.activities.length > 0 ?

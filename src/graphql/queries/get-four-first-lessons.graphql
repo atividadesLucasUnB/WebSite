@@ -1,5 +1,5 @@
 query GetFirstFourLessons {
-  activities(first: 4, orderBy: createdAt_ASC) {
+  activities(first: 4, orderBy: createdAt_DESC) {
     id
     slug
     name
