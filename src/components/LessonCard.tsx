@@ -11,7 +11,7 @@ export function Lesson(props: LessonProps) {
   })
 
   return (
-    <Link to={`/atividades/${props.slug}`} className="group mr-5 mb-5 sm:mr-0 sm:ml-5 ">
+    <Link to={`/atividade/${props.slug}`} className="group mr-5 mb-5 sm:mr-0 sm:ml-5 ">
       <span className="text-gray-300">
         {availableDateFormatted}
       </span>

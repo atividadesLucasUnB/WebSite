@@ -11,7 +11,7 @@ export function Project(props: ProjectProps) {
   })
 
   return (
-    <Link to={`/projects/${props.slug}`} className="group mr-5 mb-5 sm:mr-0 sm:ml-5 ">
+    <Link to={`/project/${props.slug}`} className="group mr-5 mb-5 sm:mr-0 sm:ml-5 ">
       <span className="text-gray-300">
         {availableDateFormatted}
       </span>
