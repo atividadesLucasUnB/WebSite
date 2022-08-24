@@ -3,16 +3,13 @@ import { Link } from "react-router-dom";
 import { Header } from "../components/Header";
 import { Lesson } from "../components/LessonCard";
 import { useGetLessonsQuery } from "../graphql/generated";
+import { Loading } from "../components/Loading";
 
 export function Atividades() {
-    const { data } = useGetLessonsQuery();
+    const { data, loading } = useGetLessonsQuery();
 
-    if (!data || !data.activities) {
-        return (
-          <div className="flex-1">
-            <p>Carregando...</p>
-          </div>
-        )
+    if (!loading || !data!.activities) {
+        return <Loading />
       }
     return (
         <div className="min-h-screen">

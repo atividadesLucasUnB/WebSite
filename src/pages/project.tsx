@@ -1,22 +1,19 @@
 import { Header } from "../components/Header";
 import { Link, useParams } from "react-router-dom";
+import { Loading } from "../components/Loading";
 import { useGetProjectBySlugQuery } from "../graphql/generated";
 import { ArrowLeft, GithubLogo} from "phosphor-react";
 import { ButtonsDownload } from "../components/ButtonsDownload";
 
 export function Project() {
     const { slug } = useParams<{  slug: string;   }>();
-    const {data} = useGetProjectBySlugQuery({
+    const { data, loading} = useGetProjectBySlugQuery({
         variables: {
             slug
         }
     })
-    if (!data || !data.project) {
-        return (
-          <div className="flex-1">
-            <p>Carregando...</p>
-          </div>
-        )
+    if (!loading || !data!.project) {
+        return <Loading />
       }
     return (
         <div className="min-h-screen">

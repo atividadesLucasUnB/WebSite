@@ -24,5 +24,6 @@ export interface LessonProps {
 }
 export interface TecnologiesProps {
     name: string;
+    slug: string;
     emojiName: string;
 }

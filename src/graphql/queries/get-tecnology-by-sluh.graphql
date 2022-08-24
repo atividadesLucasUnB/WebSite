@@ -1,0 +1,10 @@
+query GetTecBySlug($slug: String) {
+  tecnology(where: {slug: $slug}) {
+    name
+    description
+    resumedName
+    tecnologyURL {
+      url(transformation: {image: {resize: {height: 210, width: 200}}})
+    }
+  }
+}

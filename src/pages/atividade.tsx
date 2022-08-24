@@ -4,20 +4,17 @@ import { ArrowLeft, GithubLogo } from "phosphor-react";
 import { Header } from "../components/Header";
 import { useGetLessonBySlugQuery } from "../graphql/generated";
 import { ButtonsDownload } from "../components/ButtonsDownload";
+import { Loading } from "../components/Loading";
 
 export function Atividade() {
     const { slug } = useParams<{  slug: string;   }>();
-    const {data} = useGetLessonBySlugQuery({
+    const {data, loading} = useGetLessonBySlugQuery({
         variables: {
             slug
         }
     })
-    if (!data || !data.activity) {
-        return (
-          <div className="flex-1">
-            <p>Carregando...</p>
-          </div>
-        )
+    if (!loading || !data!.activity) {
+        return <Loading />
       }
     return (
         <div className="min-h-screen">

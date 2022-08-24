@@ -42,6 +42,7 @@ export function PageLanding() {
                 return (
                         <Tecnologies
                             key={tecnology.id}
+                            slug={tecnology.slug}
                             name={tecnology.name}
                             emojiName= {tecnology.emojiName}
                         />

@@ -4272,6 +4272,7 @@ export type Tecnology = Node & {
   createdAt: Scalars['DateTime'];
   /** User that created this document */
   createdBy?: Maybe<User>;
+  description: Scalars['String'];
   /** Get the document in other stages */
   documentInStages: Array<Tecnology>;
   emojiName: Scalars['String'];
@@ -4286,6 +4287,7 @@ export type Tecnology = Node & {
   publishedBy?: Maybe<User>;
   resumedName: Scalars['String'];
   scheduledIn: Array<ScheduledOperation>;
+  slug: Scalars['String'];
   /** System stage field */
   stage: Stage;
   tecnologyURL: Asset;
@@ -4361,9 +4363,11 @@ export type TecnologyCreateInput = {
   cl6f227r822a801taef6gh28t?: InputMaybe<ProjectCreateManyInlineInput>;
   cl60y3qe14gk801t5bvaz1bz5?: InputMaybe<ActivityCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
   emojiName: Scalars['String'];
   name: Scalars['String'];
   resumedName: Scalars['String'];
+  slug: Scalars['String'];
   tecnologyURL: AssetCreateOneInlineInput;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -4417,6 +4421,25 @@ export type TecnologyManyWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   createdBy?: InputMaybe<UserWhereInput>;
+  description?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  description_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  description_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  description_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  description_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  description_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  description_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  description_starts_with?: InputMaybe<Scalars['String']>;
   emojiName?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   emojiName_contains?: InputMaybe<Scalars['String']>;
@@ -4512,6 +4535,25 @@ export type TecnologyManyWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  slug?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  slug_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  slug_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  slug_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  slug_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  slug_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  slug_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  slug_starts_with?: InputMaybe<Scalars['String']>;
   tecnologyURL?: InputMaybe<AssetWhereInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
@@ -4534,6 +4576,8 @@ export type TecnologyManyWhereInput = {
 export enum TecnologyOrderByInput {
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
+  DescriptionAsc = 'description_ASC',
+  DescriptionDesc = 'description_DESC',
   EmojiNameAsc = 'emojiName_ASC',
   EmojiNameDesc = 'emojiName_DESC',
   IdAsc = 'id_ASC',
@@ -4544,6 +4588,8 @@ export enum TecnologyOrderByInput {
   PublishedAtDesc = 'publishedAt_DESC',
   ResumedNameAsc = 'resumedName_ASC',
   ResumedNameDesc = 'resumedName_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
   UpdatedAtAsc = 'updatedAt_ASC',
   UpdatedAtDesc = 'updatedAt_DESC'
 }
@@ -4551,9 +4597,11 @@ export enum TecnologyOrderByInput {
 export type TecnologyUpdateInput = {
   cl6f227r822a801taef6gh28t?: InputMaybe<ProjectUpdateManyInlineInput>;
   cl60y3qe14gk801t5bvaz1bz5?: InputMaybe<ActivityUpdateManyInlineInput>;
+  description?: InputMaybe<Scalars['String']>;
   emojiName?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   resumedName?: InputMaybe<Scalars['String']>;
+  slug?: InputMaybe<Scalars['String']>;
   tecnologyURL?: InputMaybe<AssetUpdateOneInlineInput>;
 };
 
@@ -4575,6 +4623,7 @@ export type TecnologyUpdateManyInlineInput = {
 };
 
 export type TecnologyUpdateManyInput = {
+  description?: InputMaybe<Scalars['String']>;
   emojiName?: InputMaybe<Scalars['String']>;
   resumedName?: InputMaybe<Scalars['String']>;
 };
@@ -4648,6 +4697,25 @@ export type TecnologyWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   createdBy?: InputMaybe<UserWhereInput>;
+  description?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  description_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  description_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  description_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  description_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  description_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  description_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  description_starts_with?: InputMaybe<Scalars['String']>;
   emojiName?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   emojiName_contains?: InputMaybe<Scalars['String']>;
@@ -4743,6 +4811,25 @@ export type TecnologyWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  slug?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  slug_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  slug_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  slug_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  slug_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  slug_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  slug_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  slug_starts_with?: InputMaybe<Scalars['String']>;
   tecnologyURL?: InputMaybe<AssetWhereInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
@@ -4766,6 +4853,7 @@ export type TecnologyWhereInput = {
 export type TecnologyWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
   name?: InputMaybe<Scalars['String']>;
+  slug?: InputMaybe<Scalars['String']>;
 };
 
 export type UnpublishLocaleInput = {
@@ -5270,7 +5358,14 @@ export type GetProjectsQuery = { __typename?: 'Query', projects: Array<{ __typen
 export type GetTecnologiesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetTecnologiesQuery = { __typename?: 'Query', tecnologies: Array<{ __typename?: 'Tecnology', id: string, name: string, emojiName: string }> };
+export type GetTecnologiesQuery = { __typename?: 'Query', tecnologies: Array<{ __typename?: 'Tecnology', id: string, name: string, slug: string, emojiName: string }> };
+
+export type GetTecBySlugQueryVariables = Exact<{
+  slug?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type GetTecBySlugQuery = { __typename?: 'Query', tecnology?: { __typename?: 'Tecnology', name: string, description: string, resumedName: string, tecnologyURL: { __typename?: 'Asset', url: string } } | null };
 
 
 export const GetFirstFourLessonsDocument = gql`
@@ -5370,7 +5465,7 @@ export const GetLessonBySlugDocument = gql`
       id
       name
       tecnologyURL {
-        url
+        url(transformation: {image: {resize: {height: 84, width: 80}}})
       }
     }
   }
@@ -5406,7 +5501,7 @@ export type GetLessonBySlugLazyQueryHookResult = ReturnType<typeof useGetLessonB
 export type GetLessonBySlugQueryResult = Apollo.QueryResult<GetLessonBySlugQuery, GetLessonBySlugQueryVariables>;
 export const GetLessonsDocument = gql`
     query GetLessons {
-  activities(orderBy: createdAt_ASC) {
+  activities(orderBy: createdAt_DESC) {
     id
     slug
     name
@@ -5494,7 +5589,7 @@ export type GetProjectBySlugLazyQueryHookResult = ReturnType<typeof useGetProjec
 export type GetProjectBySlugQueryResult = Apollo.QueryResult<GetProjectBySlugQuery, GetProjectBySlugQueryVariables>;
 export const GetProjectsDocument = gql`
     query GetProjects {
-  projects(orderBy: createdAt_ASC) {
+  projects(orderBy: createdAt_DESC) {
     id
     slug
     name
@@ -5536,9 +5631,10 @@ export type GetProjectsLazyQueryHookResult = ReturnType<typeof useGetProjectsLaz
 export type GetProjectsQueryResult = Apollo.QueryResult<GetProjectsQuery, GetProjectsQueryVariables>;
 export const GetTecnologiesDocument = gql`
     query GetTecnologies {
-  tecnologies(orderBy: createdAt_ASC) {
+  tecnologies(orderBy: createdAt_DESC) {
     id
     name
+    slug
     emojiName
   }
 }
@@ -5570,3 +5666,43 @@ export function useGetTecnologiesLazyQuery(baseOptions?: Apollo.LazyQueryHookOpt
 export type GetTecnologiesQueryHookResult = ReturnType<typeof useGetTecnologiesQuery>;
 export type GetTecnologiesLazyQueryHookResult = ReturnType<typeof useGetTecnologiesLazyQuery>;
 export type GetTecnologiesQueryResult = Apollo.QueryResult<GetTecnologiesQuery, GetTecnologiesQueryVariables>;
+export const GetTecBySlugDocument = gql`
+    query GetTecBySlug($slug: String) {
+  tecnology(where: {slug: $slug}) {
+    name
+    description
+    resumedName
+    tecnologyURL {
+      url(transformation: {image: {resize: {height: 210, width: 200}}})
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetTecBySlugQuery__
+ *
+ * To run a query within a React component, call `useGetTecBySlugQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTecBySlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTecBySlugQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useGetTecBySlugQuery(baseOptions?: Apollo.QueryHookOptions<GetTecBySlugQuery, GetTecBySlugQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetTecBySlugQuery, GetTecBySlugQueryVariables>(GetTecBySlugDocument, options);
+      }
+export function useGetTecBySlugLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTecBySlugQuery, GetTecBySlugQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetTecBySlugQuery, GetTecBySlugQueryVariables>(GetTecBySlugDocument, options);
+        }
+export type GetTecBySlugQueryHookResult = ReturnType<typeof useGetTecBySlugQuery>;
+export type GetTecBySlugLazyQueryHookResult = ReturnType<typeof useGetTecBySlugLazyQuery>;
+export type GetTecBySlugQueryResult = Apollo.QueryResult<GetTecBySlugQuery, GetTecBySlugQueryVariables>;

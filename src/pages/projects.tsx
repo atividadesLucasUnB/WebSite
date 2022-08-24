@@ -1,18 +1,16 @@
-import { ArrowLeft, ArrowUp } from "phosphor-react";
 import { Link } from "react-router-dom";
+import { ArrowLeft, ArrowUp } from "phosphor-react";
+
 import { Header } from "../components/Header";
+import { Loading } from "../components/Loading";
 import { Project } from "../components/ProjectCard";
 import { useGetProjectsQuery } from "../graphql/generated";
 
 export function Projects() {
-    const { data } = useGetProjectsQuery();
+    const { data, loading } = useGetProjectsQuery();
 
-    if (!data || !data.projects) {
-        return (
-          <div className="flex-1">
-            <p>Carregando...</p>
-          </div>
-        )
+    if (loading || !data!.projects) {
+        return <Loading />
       }
     return (
         <div className="min-h-screen">

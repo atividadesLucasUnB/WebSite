@@ -1,7 +1,8 @@
 query GetTecnologies {
-    tecnologies(orderBy: createdAt_ASC) {
+    tecnologies(orderBy: createdAt_DESC) {
       id
       name
+      slug
       emojiName
     }
     }

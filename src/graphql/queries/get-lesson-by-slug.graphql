@@ -11,7 +11,7 @@ query getLessonBySlug($slug: String) {
       id
       name
       tecnologyURL {
-        url
+         url(transformation: {image: {resize: {height: 84, width: 80}}})
       }
     }
   }
