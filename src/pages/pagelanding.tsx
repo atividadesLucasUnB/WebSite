@@ -52,7 +52,7 @@ export function PageLanding() {
         </div>
         <div className="flex ml-[5.1rem] flex-col gap-8 mt-[3.125rem]">
             <div className="flex text-center">
-                <h1 className="font-bold  text-2xl mr-20 self-center sm:mr-0 sm:self-start sm:text-4xl">PROJETOS</h1>
+                <h1 className="font-bold text-2xl mr-20 self-center sm:mr-0 sm:self-start sm:text-4xl">PROJETOS</h1>
                 {
                     AllProjects && AllProjects?.projects.length > 4 &&
                     <Link to="/projects" className="flex ml-3 self-center">

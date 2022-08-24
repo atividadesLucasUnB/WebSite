@@ -7,7 +7,11 @@ export interface ProjectProps {
     emojiName: string;
     createdAt: Date;
 }
-
+export interface ButtonsDownloadProps {
+    otherOs: string;
+    linuxUrl?: string;
+    windowsUrl?: string;
+}
 export interface LessonProps {
     key: string;
     slug: string;
