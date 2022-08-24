@@ -8,9 +8,11 @@ export interface ProjectProps {
     createdAt: Date;
 }
 export interface ButtonsDownloadProps {
-    otherOs: string;
-    linuxUrl?: string;
-    windowsUrl?: string;
+    props:{
+        otherOs: string;
+        linuxUrl?: string | null | undefined;
+        windowsUrl?: string | null | undefined;
+    }
 }
 export interface LessonProps {
     key: string;

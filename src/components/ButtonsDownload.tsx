@@ -1,8 +1,8 @@
 import { LinuxLogo, WindowsLogo } from "phosphor-react";
-import { isOperatingSystemKnow } from "../utils/platform";
 import { ButtonsDownloadProps } from "../utils/props";
+import { isOperatingSystemKnow } from "../utils/platform";
 
-export function ButtonsDownload(props: ButtonsDownloadProps) {
+export function ButtonsDownload({props}: ButtonsDownloadProps) {
     return (
         <>
         <div className="ml-[6.29rem] space-x-2 mt-[5.38rem] flex flex-col place-items-center mr-10">
