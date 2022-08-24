@@ -3,7 +3,9 @@ import { Lesson } from "../components/LessonCard";
 import { Project } from "../components/ProjectCard";
 import { Tecnologies } from "../components/Tecnologies";
 import { Link } from "react-router-dom";
-import { 
+import {
+    useGetLessonsQuery,
+    useGetProjectsQuery,
     useGetTecnologiesQuery,
     useGetFirstFourLessonsQuery, 
     useGetFirstFourProjectsQuery
@@ -11,11 +13,13 @@ import {
 
 export function PageLanding() {
     const { data } =  useGetFirstFourLessonsQuery();
+    const { data: Allessons } = useGetLessonsQuery();
+    const { data: AllProjects } = useGetProjectsQuery();
     const { data: tecData } =  useGetTecnologiesQuery();
     const { data: ProjData } =  useGetFirstFourProjectsQuery();
     
     return(
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-8 min-h-screen">
             <Header  />
 
             <div className="flex flex-col md:flex-row ml-[5.1rem] ">
@@ -49,9 +53,12 @@ export function PageLanding() {
         <div className="flex ml-[5.1rem] flex-col gap-8 mt-[3.125rem]">
             <div className="flex text-center">
                 <h1 className="font-bold  text-2xl mr-20 self-center sm:mr-0 sm:self-start sm:text-4xl">PROJETOS</h1>
-                <Link to="/projects" className="flex ml-3 self-center">
-                    <p className="text-base font-normal">Mostrar todos projetos</p>
-                </Link>
+                {
+                    AllProjects && AllProjects?.projects.length > 4 &&
+                    <Link to="/projects" className="flex ml-3 self-center">
+                        <p className="text-base font-normal">Mostrar todos projetos</p>
+                    </Link>
+                }
             </div>
 
             <div className="flex flex-wrap content-start -ml-10 scroll-pl-6  md:content-center md:-ml-5">
@@ -79,9 +86,12 @@ export function PageLanding() {
         <div className="flex ml-[5.1rem] flex-col gap-8 mt-[2rem]">
             <div className="flex text-center">
                 <h1 className="font-bold  text-2xl mr-20 self-center sm:mr-0 sm:self-start sm:text-4xl">ATIVIDADES</h1>
-                <Link to="/atividades" className="flex ml-3 self-center">
-                    <p className="text-base font-normal">Mostrar todas atividades</p>
-                </Link>
+                {
+                    Allessons && Allessons?.activities.length > 4 &&
+                    <Link to="/atividades" className="flex ml-3 self-center">
+                        <p className="text-base font-normal">Mostrar todas atividades</p>
+                    </Link>
+                }
             </div>
             <div className="flex flex-wrap content-start -ml-10  md:content-center md:-ml-5">
             { data &&
@@ -103,7 +113,7 @@ export function PageLanding() {
                 </div>
 
         </div>
-        <hr className="self-end mt-20 mb-5  w-full border-gray-700"/>
+        <hr className="self-end mt-auto mb-10 w-full border-gray-700"/>
       </div>
     )
 }

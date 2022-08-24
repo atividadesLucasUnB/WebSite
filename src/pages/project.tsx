@@ -25,7 +25,7 @@ export function Project() {
         )
       }
     return (
-        <div className="">
+        <div className="min-h-screen">
             <Header />
             <Link to="/#" className="flex  space-x-2 place-items-center ml-[4rem] m-[5rem]">
                 <ArrowLeft size={32}/>
@@ -82,7 +82,7 @@ export function Project() {
             </a>
         </div>
             }
-            <hr className="self-end mt-40 mb-5 w-full border-gray-700"/>
+            <hr className="self-end mt-auto mb-10 w-full border-gray-700"/>
         </div>
     )
 }
